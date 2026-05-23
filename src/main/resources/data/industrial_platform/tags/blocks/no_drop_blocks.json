@@ -1,0 +1,40 @@
+{
+	"replace": false,
+	"values": [
+		{
+			"id": "#forge:stone",
+			"required": false
+		},
+		{
+			"id": "#forge:cobblestone",
+			"required": false
+		},
+		{
+			"id": "#forge:deepslate",
+			"required": false
+		},
+		"minecraft:stone",
+		"minecraft:granite",
+		"minecraft:diorite",
+		"minecraft:andesite",
+		"minecraft:cobblestone",
+		"minecraft:deepslate",
+		"minecraft:cobbled_deepslate",
+		"minecraft:tuff",
+		"minecraft:calcite",
+		"minecraft:dirt",
+		"minecraft:grass_block",
+		"minecraft:gravel",
+		"minecraft:sand",
+		"minecraft:sandstone",
+		"minecraft:chiseled_sandstone",
+		"minecraft:cut_sandstone",
+		"minecraft:smooth_sandstone",
+		"minecraft:red_sandstone",
+		"minecraft:chiseled_red_sandstone",
+		"minecraft:cut_red_sandstone",
+		"minecraft:smooth_red_sandstone",
+		"minecraft:netherrack",
+		"minecraft:end_stone"
+	]
+}
