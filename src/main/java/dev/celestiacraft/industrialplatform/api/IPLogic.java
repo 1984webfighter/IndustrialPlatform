@@ -1,5 +1,6 @@
 package dev.celestiacraft.industrialplatform.api;
 
+import dev.celestiacraft.industrialplatform.IndustrialPlatform;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -19,15 +20,14 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemp
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
 import net.minecraftforge.registries.ForgeRegistries;
 import dev.celestiacraft.industrialplatform.config.CommonConfig;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
 
 public class IPLogic {
-	private static final String MODID = "industrial_platform";
-
 	public static void placeStructure(ServerLevel level, int x, int y, int z, String structureId) {
 		StructureTemplateManager manager = level.getStructureManager();
-		ResourceLocation structureName = loadResource(structureId);
+		ResourceLocation structureName = IndustrialPlatform.loadResource(structureId);
 		Optional<StructureTemplate> template = manager.get(structureName);
 		template.ifPresent((temp) -> {
 			temp.placeInWorld(
@@ -43,7 +43,7 @@ public class IPLogic {
 
 	public static void placeExtendedStructure(ServerLevel level, int x, int y, int z, String structureId) {
 		StructureTemplateManager manager = level.getStructureManager();
-		ResourceLocation structureName = loadResource(structureId);
+		ResourceLocation structureName = IndustrialPlatform.loadResource(structureId);
 		Optional<StructureTemplate> template = manager.get(structureName);
 		for (int i = x - 16; i <= x + 16; i = i + 16) {
 			for (int j = z - 16; j <= z + 16; j = j + 16) {
@@ -135,13 +135,9 @@ public class IPLogic {
 
 	private static boolean shouldDrop(BlockState state) {
 		ResourceLocation blockId = ForgeRegistries.BLOCKS.getKey(state.getBlock());
-		return !loadResource("industrial_platform").equals(blockId)
-				&& !loadResource("fluid_pool").equals(blockId)
+		return !IndustrialPlatform.loadResource("industrial_platform").equals(blockId)
+				&& !IndustrialPlatform.loadResource("fluid_pool").equals(blockId)
 				&& !BlockMatcher.matches(state, CommonConfig.NO_DROP_BLOCKS);
-	}
-
-	private static ResourceLocation loadResource(String path) {
-		return ResourceLocation.fromNamespaceAndPath(MODID, path);
 	}
 
 	private static class DropBeforePlaceProcessor extends StructureProcessor {
@@ -153,12 +149,12 @@ public class IPLogic {
 
 		@Override
 		public StructureTemplate.StructureBlockInfo processBlock(
-				LevelReader levelReader,
-				BlockPos offset,
-				BlockPos pos,
-				StructureTemplate.StructureBlockInfo originalBlockInfo,
+				@NotNull LevelReader levelReader,
+				@NotNull BlockPos offset,
+				@NotNull BlockPos pos,
+				StructureTemplate.@NotNull StructureBlockInfo originalBlockInfo,
 				StructureTemplate.StructureBlockInfo currentBlockInfo,
-				StructurePlaceSettings settings
+				@NotNull StructurePlaceSettings settings
 		) {
 			BlockPos targetPos = currentBlockInfo.pos();
 			BlockState targetState = level.getBlockState(targetPos);
@@ -180,7 +176,7 @@ public class IPLogic {
 		}
 
 		@Override
-		protected StructureProcessorType<?> getType() {
+		protected @NotNull StructureProcessorType<?> getType() {
 			return StructureProcessorType.NOP;
 		}
 	}

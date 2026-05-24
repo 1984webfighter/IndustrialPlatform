@@ -1,23 +1,22 @@
 package dev.celestiacraft.industrialplatform.block;
 
+import dev.celestiacraft.industrialplatform.IndustrialPlatform;
+import dev.celestiacraft.industrialplatform.block.platform.PlatformBlock;
+import dev.celestiacraft.industrialplatform.block.platform.PlatformItem;
+import dev.celestiacraft.industrialplatform.block.pool.FluidPoolBlock;
+import dev.celestiacraft.industrialplatform.block.pool.FluidPoolItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import dev.celestiacraft.industrialplatform.IndustrialPlatform;
-import dev.celestiacraft.industrialplatform.block.pool.FluidPoolBlock;
-import dev.celestiacraft.industrialplatform.block.pool.FluidPoolItem;
-import dev.celestiacraft.industrialplatform.block.platform.PlatformBlock;
-import dev.celestiacraft.industrialplatform.block.platform.PlatformItem;
-import dev.celestiacraft.industrialplatform.api.ICheckModLoaded;
 
 import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class BlockRegister {
-	private static final DeferredRegister<Block> BLOCKS;
-	private static final DeferredRegister<Item> ITEMS;
+	public static final DeferredRegister<Block> BLOCKS;
+	public static final DeferredRegister<Item> ITEMS;
 
 	public static final Supplier<Block> INDUSTRIAL_PLATFORM;
 	public static final Supplier<Block> FLUID_POOL;
@@ -28,11 +27,7 @@ public class BlockRegister {
 
 		INDUSTRIAL_PLATFORM = registerBlock("industrial_platform", PlatformBlock::new, PlatformItem::new);
 
-		if (ICheckModLoaded.hasCreate()) {
-			FLUID_POOL = registerBlock("fluid_pool", FluidPoolBlock::new, FluidPoolItem::new);
-		} else {
-			FLUID_POOL = null;
-		}
+		FLUID_POOL = registerBlock("fluid_pool", FluidPoolBlock::new, FluidPoolItem::new);
 	}
 
 	public static void register(IEventBus event) {
