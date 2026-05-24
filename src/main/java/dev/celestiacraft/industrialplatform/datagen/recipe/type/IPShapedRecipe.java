@@ -40,7 +40,7 @@ public class IPShapedRecipe extends IPRecipeProvider {
 				.define('C', IPTags.Items.DEEPSLATE)
 				.define('D', Tags.Items.STONE)
 				.unlockedBy("stone", has(Tags.Items.STONE))
-				.save(consumer, IndustrialPlatform.loadResource("platform2"));
+				.save(consumer, IndustrialPlatform.loadResource("platform_2"));
 
 		ConditionalRecipe.builder()
 				.addCondition(new ModLoadedCondition("create"))
@@ -70,7 +70,7 @@ public class IPShapedRecipe extends IPRecipeProvider {
 							.define('C', IPTags.Items.DEEPSLATE)
 							.define('D', Tags.Items.STONE)
 							.unlockedBy("stone", has(Tags.Items.STONE))
-							.save(recipe, IndustrialPlatform.loadResource("pool2"));
+							.save(recipe, IndustrialPlatform.loadResource("pool_2"));
 				})
 				.build(consumer, IndustrialPlatform.loadResource("pool2"));
 	}
