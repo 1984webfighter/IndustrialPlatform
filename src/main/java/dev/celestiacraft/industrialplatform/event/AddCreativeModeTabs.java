@@ -1,5 +1,6 @@
 package dev.celestiacraft.industrialplatform.event;
 
+import dev.celestiacraft.industrialplatform.api.ICheckModLoaded;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -12,7 +13,9 @@ public class AddCreativeModeTabs {
 	public static void buildContents(BuildCreativeModeTabContentsEvent event) {
 		if (event.getTabKey().equals(CreativeModeTabs.TOOLS_AND_UTILITIES)) {
 			event.accept(BlockRegister.INDUSTRIAL_PLATFORM.get().asItem());
-			event.accept(BlockRegister.FLUID_POOL.get().asItem());
+			if (ICheckModLoaded.hasCreate()) {
+				event.accept(BlockRegister.FLUID_POOL.get().asItem());
+			}
 		}
 	}
 }
