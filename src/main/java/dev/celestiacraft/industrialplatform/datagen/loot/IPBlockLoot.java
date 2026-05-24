@@ -28,7 +28,6 @@ public class IPBlockLoot extends BlockLootSubProvider {
 	protected @NotNull Iterable<Block> getKnownBlocks() {
 		return BlockRegister.BLOCKS.getEntries()
 				.stream()
-				.map(RegistryObject::get)
-				::iterator;
+				.map(RegistryObject::get)::iterator;
 	}
 }
