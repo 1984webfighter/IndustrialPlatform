@@ -19,7 +19,6 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProc
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
 import net.minecraftforge.registries.ForgeRegistries;
-import dev.celestiacraft.industrialplatform.config.CommonConfig;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
