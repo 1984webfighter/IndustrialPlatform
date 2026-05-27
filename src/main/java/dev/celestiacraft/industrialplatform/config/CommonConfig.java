@@ -9,7 +9,6 @@ public class CommonConfig {
 
 	public static final ForgeConfigSpec.ConfigValue<List<? extends String>> TRIGGER_BLOCK;
 	public static final ForgeConfigSpec.ConfigValue<List<? extends String>> ADJUSTER;
-	public static final ForgeConfigSpec.ConfigValue<List<? extends String>> NO_DROP_BLOCKS;
 	public static final ForgeConfigSpec.IntValue TOP_FILLING_DISTANCE;
 	public static final ForgeConfigSpec.IntValue BOTTOM_FILLING_DISTANCE;
 
@@ -23,7 +22,7 @@ public class CommonConfig {
 				.comment("Examples: \"#forge:stone\", \"minecraft:cobblestone\"")
 				.defineListAllowEmpty(
 						"trigger_block",
-						List.of("#forge:stone","minecraft:cobblestone"),
+						List.of("#forge:stone", "minecraft:cobblestone"),
 						CommonConfig::validateString
 				);
 
@@ -34,17 +33,6 @@ public class CommonConfig {
 				.defineListAllowEmpty(
 						"adjuster",
 						List.of("#forge:tools/wrench", "minecraft:stick"),
-						CommonConfig::validateString
-				);
-
-		NO_DROP_BLOCKS = BUILDER
-				.comment("Blocks that should be destroyed without drops during platform deployment.")
-				.comment("Use \"#namespace:path\" for block tags, \"namespace:path\" for block IDs.")
-				.comment("Defaults are driven by the industrial_platform:no_drop_blocks block tag.")
-				.comment("Examples: \"#industrial_platform:no_drop_blocks\", \"#forge:stone\", \"minecraft:dirt\"")
-				.defineListAllowEmpty(
-						"no_drop_blocks",
-						List.of("#industrial_platform:no_drop_blocks"),
 						CommonConfig::validateString
 				);
 

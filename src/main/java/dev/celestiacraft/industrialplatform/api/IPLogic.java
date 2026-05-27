@@ -41,28 +41,6 @@ public class IPLogic {
 		});
 	}
 
-	public static void placeExtendedStructure(ServerLevel level, int x, int y, int z, String structureId) {
-		StructureTemplateManager manager = level.getStructureManager();
-		ResourceLocation structureName = IndustrialPlatform.loadResource(structureId);
-		Optional<StructureTemplate> template = manager.get(structureName);
-		for (int i = x - 16; i <= x + 16; i = i + 16) {
-			for (int j = z - 16; j <= z + 16; j = j + 16) {
-				int finalI = i;
-				int finalJ = j;
-				template.ifPresent((temp) -> {
-					temp.placeInWorld(
-							level,
-							new BlockPos(finalI, y, finalJ),
-							new BlockPos(finalI, y, finalJ),
-							createSafePlaceSettings(level),
-							level.random,
-							3
-					);
-				});
-			}
-		}
-	}
-
 	private static StructurePlaceSettings createSafePlaceSettings(ServerLevel level) {
 		return new StructurePlaceSettings()
 				.setRotation(Rotation.NONE)
@@ -137,7 +115,7 @@ public class IPLogic {
 		ResourceLocation blockId = ForgeRegistries.BLOCKS.getKey(state.getBlock());
 		return !IndustrialPlatform.loadResource("industrial_platform").equals(blockId)
 				&& !IndustrialPlatform.loadResource("fluid_pool").equals(blockId)
-				&& !BlockMatcher.matches(state, CommonConfig.NO_DROP_BLOCKS);
+				&& !state.is(IPTags.Blocks.NO_DROP_BLOCKS);
 	}
 
 	private static class DropBeforePlaceProcessor extends StructureProcessor {
