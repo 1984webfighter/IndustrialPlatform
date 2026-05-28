@@ -42,36 +42,32 @@ public class IPShapedRecipe extends IPRecipeProvider {
 				.unlockedBy("stone", has(Tags.Items.STONE))
 				.save(consumer, IndustrialPlatform.loadResource("platform_2"));
 
-		ConditionalRecipe.builder()
-				.addCondition(new ModLoadedCondition("create"))
-				.addRecipe((recipe) -> {
-					ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, BlockRegister.FLUID_POOL.get())
-							.pattern("A B")
-							.pattern("D D")
-							.pattern("DCD")
-							.define('A', Tags.Items.DYES_BLACK)
-							.define('B', Tags.Items.DYES_YELLOW)
-							.define('C', IPTags.Items.DEEPSLATE)
-							.define('D', Tags.Items.STONE)
-							.unlockedBy("stone", has(Tags.Items.STONE))
-							.save(recipe, IndustrialPlatform.loadResource("pool"));
-				})
-				.build(consumer, IndustrialPlatform.loadResource("pool"));
+		ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, BlockRegister.FLUID_POOL.get())
+				.pattern("A B")
+				.pattern("D D")
+				.pattern("DCD")
+				.define('A', Tags.Items.DYES_BLACK)
+				.define('B', Tags.Items.DYES_YELLOW)
+				.define('C', IPTags.Items.DEEPSLATE)
+				.define('D', Tags.Items.STONE)
+				.unlockedBy("stone", has(Tags.Items.STONE))
+				.save(consumer, IndustrialPlatform.loadResource("pool"));
 
-		ConditionalRecipe.builder()
-				.addCondition(new ModLoadedCondition("create"))
-				.addRecipe((recipe) -> {
-					ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, BlockRegister.FLUID_POOL.get())
-							.pattern("A B")
-							.pattern("D D")
-							.pattern("DCD")
-							.define('A', Tags.Items.DYES_BLACK)
-							.define('B', Tags.Items.DYES_YELLOW)
-							.define('C', IPTags.Items.DEEPSLATE)
-							.define('D', Tags.Items.STONE)
-							.unlockedBy("stone", has(Tags.Items.STONE))
-							.save(recipe, IndustrialPlatform.loadResource("pool_2"));
-				})
-				.build(consumer, IndustrialPlatform.loadResource("pool2"));
+		ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, BlockRegister.FLUID_POOL.get())
+				.pattern("A B")
+				.pattern("D D")
+				.pattern("DCD")
+				.define('A', Tags.Items.DYES_BLACK)
+				.define('B', Tags.Items.DYES_YELLOW)
+				.define('C', IPTags.Items.DEEPSLATE)
+				.define('D', Tags.Items.STONE)
+				.unlockedBy("stone", has(Tags.Items.STONE))
+				.save(consumer, IndustrialPlatform.loadResource("pool_2"));
+
+//		ConditionalRecipe.builder()
+//				.addCondition(new ModLoadedCondition("create"))
+//				.addRecipe((recipe) -> {
+//
+//				}).build(consumer, IndustrialPlatform.loadResource("pool"));
 	}
 }
