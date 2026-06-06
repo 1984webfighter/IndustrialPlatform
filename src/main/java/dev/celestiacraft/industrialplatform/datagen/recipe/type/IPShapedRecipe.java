@@ -21,53 +21,28 @@ public class IPShapedRecipe extends IPRecipeProvider {
 
 	public static void register(Consumer<FinishedRecipe> consumer) {
 		ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, BlockRegister.INDUSTRIAL_PLATFORM.get())
-				.pattern("ACB")
-				.pattern("DDD")
-				.pattern("DDD")
-				.define('A', Tags.Items.DYES_YELLOW)
-				.define('B', Tags.Items.DYES_BLACK)
-				.define('C', IPTags.Items.DEEPSLATE)
-				.define('D', Tags.Items.STONE)
+				.pattern("ABA")
+				.pattern("CCC")
+				.pattern("CCC")
+				.define('A', Tags.Items.DYES)
+				.define('C', Tags.Items.STONE)
+				.define('C', Tags.Items.STONE)
 				.unlockedBy("stone", has(Tags.Items.STONE))
 				.save(consumer, IndustrialPlatform.loadResource("platform"));
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, BlockRegister.INDUSTRIAL_PLATFORM.get())
-				.pattern("ACB")
-				.pattern("DDD")
-				.pattern("DDD")
-				.define('A', Tags.Items.DYES_BLACK)
-				.define('B', Tags.Items.DYES_YELLOW)
-				.define('C', IPTags.Items.DEEPSLATE)
-				.define('D', Tags.Items.STONE)
-				.unlockedBy("stone", has(Tags.Items.STONE))
-				.save(consumer, IndustrialPlatform.loadResource("platform_2"));
-
-		ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, BlockRegister.FLUID_POOL.get())
-				.pattern("A B")
-				.pattern("D D")
-				.pattern("DCD")
-				.define('A', Tags.Items.DYES_BLACK)
-				.define('B', Tags.Items.DYES_YELLOW)
-				.define('C', IPTags.Items.DEEPSLATE)
-				.define('D', Tags.Items.STONE)
-				.unlockedBy("stone", has(Tags.Items.STONE))
-				.save(consumer, IndustrialPlatform.loadResource("pool"));
-
-		ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, BlockRegister.FLUID_POOL.get())
-				.pattern("A B")
-				.pattern("D D")
-				.pattern("DCD")
-				.define('A', Tags.Items.DYES_BLACK)
-				.define('B', Tags.Items.DYES_YELLOW)
-				.define('C', IPTags.Items.DEEPSLATE)
-				.define('D', Tags.Items.STONE)
-				.unlockedBy("stone", has(Tags.Items.STONE))
-				.save(consumer, IndustrialPlatform.loadResource("pool_2"));
-
-//		ConditionalRecipe.builder()
-//				.addCondition(new ModLoadedCondition("create"))
-//				.addRecipe((recipe) -> {
-//
-//				}).build(consumer, IndustrialPlatform.loadResource("pool"));
+		ConditionalRecipe.builder()
+				.addCondition(new ModLoadedCondition("create"))
+				.addRecipe((recipe) -> {
+					ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, BlockRegister.FLUID_POOL.get())
+							.pattern("A A")
+							.pattern("B B")
+							.pattern("BBB")
+							.define('A', Tags.Items.DYES)
+							.define('C', IPTags.Items.DEEPSLATE)
+							.define('D', Tags.Items.STONE)
+							.unlockedBy("stone", has(Tags.Items.STONE))
+							.save(recipe, IndustrialPlatform.loadResource("pool"));
+				})
+				.build(consumer, IndustrialPlatform.loadResource("pool"));
 	}
 }
