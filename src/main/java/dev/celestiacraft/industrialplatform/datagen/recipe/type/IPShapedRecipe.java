@@ -25,8 +25,8 @@ public class IPShapedRecipe extends IPRecipeProvider {
 				.pattern("CCC")
 				.pattern("CCC")
 				.define('A', Tags.Items.DYES)
-				.define('C', Tags.Items.STONE)
-				.define('C', Tags.Items.STONE)
+				.define('B', Tags.Items.STONE)
+				.define('C', IPTags.Items.DEEPSLATE)
 				.unlockedBy("stone", has(Tags.Items.STONE))
 				.save(consumer, IndustrialPlatform.loadResource("platform"));
 
