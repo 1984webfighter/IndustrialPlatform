@@ -19,7 +19,9 @@ public class IndustrialPlatform {
 	public static ResourceLocation loadResource(String path) {
 		return ResourceLocation.fromNamespaceAndPath(MODID, path);
 	}
-
+    public IndustrialPlatform() {
+        this(FMLJavaModLoadingContext.get());
+    }
 	public IndustrialPlatform(FMLJavaModLoadingContext context) {
 		IEventBus bus = context.getModEventBus();
 
